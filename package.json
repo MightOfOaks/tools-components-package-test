@@ -1,9 +1,9 @@
 {
   
-  "name": "@deus-labs/tools-components",
+  "name": "@mightofoaks/tools-components-package-test",
   "version": "0.0.1",
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/deus-labs"
+    "registry": "https://npm.pkg.github.com/mightofoaks"
   },
   "description": "Shared component library for -tools projects",
   
