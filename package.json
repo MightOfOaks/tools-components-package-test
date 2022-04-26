@@ -1,0 +1,53 @@
+{
+  
+  "name": "@deus-labs/tools-components",
+  "version": "0.0.1",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/deus-labs"
+  },
+  "description": "Shared component library for -tools projects",
+  
+  "scripts": {
+    "rollup": "rollup -c"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/deus-labs/tools-components.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/deus-labs/tools-components/issues"
+  },
+  "homepage": "https://github.com/deus-labs/tools-components#readme",
+  "dependencies": {
+    "clsx": "^1",
+    "next": "^12",
+    "next-seo": "^4",
+    "react": "^17",
+    "react-datetime-picker": "^3",
+    "react-dom": "^17",
+    "react-hook-form": "^7",
+    "react-hot-toast": "^2",
+    "react-icons": "^4",
+    "react-popper": "^2",
+    "react-query": "^3"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^22.0.0",
+    "@rollup/plugin-node-resolve": "^13.2.1",
+    "@rollup/plugin-typescript": "^8.3.2",
+    "@types/node": "^17",
+    "@types/react": "^17",
+    "@types/react-datetime-picker": "^3",
+    "rollup": "^2.70.2",
+    "rollup-plugin-dts": "^4.2.1",
+    "typescript": "^4"
+  },
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "files": [
+    "dist"
+  ],
+  "types": "dist/index.d.ts"
+}
