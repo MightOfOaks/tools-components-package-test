@@ -7,7 +7,6 @@ import { terser } from "rollup-plugin-terser";
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import tailwind from 'rollup-plugin-tailwindcss';
 
-
 const packageJson = require("./package.json");
 
 export default [
@@ -31,7 +30,7 @@ export default [
         input: './src/index.css', // required
         // Tailor the emitted stylesheet to the bundle by removing any unused CSS
         // (highly recommended when packaging for distribution).
-        purge: false,
+        purge: true,
       }),
       postcss({
         config: {
@@ -51,8 +50,9 @@ export default [
     ],
   },
   {
-    input: "dist/esm/types/index.d.ts",
+    input: "src/index.ts",
     output: [{ file: "dist/index.d.ts", format: "esm" }],
     plugins: [dts()],
+    external: [/\.css$/],
   },
 ];
