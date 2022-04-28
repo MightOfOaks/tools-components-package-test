@@ -1,6 +1,6 @@
 {
   "name": "@mightofoaks/tools-components-package-test",
-  "version": "0.0.6",
+  "version": "0.0.8",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/mightofoaks"
   },

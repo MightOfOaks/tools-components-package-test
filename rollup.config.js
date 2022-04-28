@@ -27,7 +27,7 @@ export default [
     plugins: [
       peerDepsExternal(),
       tailwind({
-        input: './src/index.css', // required
+        input: './index.css', // required
         // Tailor the emitted stylesheet to the bundle by removing any unused CSS
         // (highly recommended when packaging for distribution).
         purge: true,
@@ -46,11 +46,11 @@ export default [
       resolve(),
       commonjs(),
       typescript({ tsconfig: "./tsconfig.json" }),
-      terser(),
+      //terser(),
     ],
   },
   {
-    input: "src/index.ts",
+    input: "dist/esm/types/index.d.ts",
     output: [{ file: "dist/index.d.ts", format: "esm" }],
     plugins: [dts()],
     external: [/\.css$/],
