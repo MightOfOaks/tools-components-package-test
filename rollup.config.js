@@ -5,7 +5,10 @@ import dts from "rollup-plugin-dts";
 import postcss from "rollup-plugin-postcss";
 import { terser } from "rollup-plugin-terser";
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
-import tailwind from 'rollup-plugin-tailwindcss';
+import tailwind from 'tailwindcss';
+import babel from "@rollup/plugin-babel";
+import swc from "rollup-plugin-swc";
+import postcssImport from 'postcss-import';
 
 const packageJson = require("./package.json");
 
@@ -24,28 +27,40 @@ export default [
         sourcemap: true,
       },
     ],
-    plugins: [
-      peerDepsExternal(),
-      tailwind({
-        input: './index.css', // required
-        // Tailor the emitted stylesheet to the bundle by removing any unused CSS
-        // (highly recommended when packaging for distribution).
-        purge: true,
+    plugins: [  
+      resolve(),
+      babel({
+        // this is needed because we're using TypeScript
+        babelHelpers: "bundled",
+        extensions: [".ts", ".tsx"],
       }),
+      peerDepsExternal(),
+    
       postcss({
         config: {
           path: "./postcss.config.js",
         },
-        extensions: [".css"],
-        minimize: true,
         extract: true,
+        module: false,
+        plugins: [
+          tailwind({input: './index.css',
+          config:"./tailwind.config.js", purge: true}),
+          postcssImport()
+        ],
         inject: {
           insertAt: "top",
         },
       }),
-      resolve(),
-      commonjs(),
       typescript({ tsconfig: "./tsconfig.json" }),
+      swc({
+        jsc: {
+            parser: {
+                syntax: "typescript",
+            },
+            target: "es2018",
+        },
+      }),
+      commonjs(),
       //terser(),
     ],
   },
