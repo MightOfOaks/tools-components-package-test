@@ -19,18 +19,15 @@ export default [
       {
         file: packageJson.main,
         format: "cjs",
-        sourcemap: true,
       },
       {
         file: packageJson.module,
         format: "esm",
-        sourcemap: true,
       },
     ],
     plugins: [  
       resolve(),
       babel({
-        // this is needed because we're using TypeScript
         babelHelpers: "bundled",
         extensions: [".ts", ".tsx"],
       }),
@@ -61,7 +58,7 @@ export default [
         },
       }),
       commonjs(),
-      //terser(),
+      terser(),
     ],
   },
   {
